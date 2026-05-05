@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulsePro - Intraday F&O Signals</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; padding: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .signal-card { background: #1e2937; border-radius: 12px; padding: 16px; margin-bottom: 16px; border-left: 6px solid #22c55e; }
+    .execute { border-left-color: #22c55e; }
+    .watchlist { border-left-color: #eab308; }
+    .stock { font-size: 1.4rem; font-weight: bold; }
+    .score { font-size: 1.8rem; font-weight: bold; color: #22c55e; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 9999px; font-size: 0.8rem; background: #3b82f6; color: white; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>PulsePro</h1>
+    <div>
+      <strong>Market:</strong> <span id="market-status">OPEN</span>
+    </div>
+  </div>
+
+  <h2>High Conviction Signals</h2>
+  <div id="signals"></div>
+
+  <script>
+    // This will be connected to WebSocket later
+    const signalsDiv = document.getElementById('signals');
+
+    // Sample signal for now
+    function renderSampleSignal() {
+      const card = document.createElement('div');
+      card.className = 'signal-card execute';
+      card.innerHTML = `
+        <div class="stock">HDFCBANK <span class="badge">PROFESSIONAL</span></div>
+        <div>BULLISH • BREAKOUT + RETEST</div>
+        <div>Entry: 1682 - 1685 | SL: 1670 | Targets: 1712 | 1735</div>
+        <div style="margin-top: 12px;">
+          <strong>Confluence Score:</strong> <span class="score">87</span>/100
+        </div>
+        <div style="margin-top: 8px; font-size: 0.9rem; color: #94a3b8;">
+          • Strong time-of-day RVOL 4.8x<br>
+          • Clean breakout + retest<br>
+          • Trending regime + VWAP reclaim
+        </div>
+      `;
+      signalsDiv.appendChild(card);
+    }
+
+    renderSampleSignal();
+  </script>
+</body>
+</html>
